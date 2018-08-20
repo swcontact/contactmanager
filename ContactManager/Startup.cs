@@ -20,8 +20,31 @@ namespace ContactManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // CORS policy
+            string corsOrigin = Configuration.GetValue<string>("CorsOrigin");
+            if (corsOrigin == "*")
+            {
+                services.AddCors(options =>
+                {
+                    options.AddPolicy("AllowSpecificOrigin",
+                        builder => builder.AllowAnyOrigin());
+                });
+            }
+            else
+            {
+                services.AddCors(options =>
+                {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder => builder.WithOrigins(corsOrigin));
+                });
+
+            }
+
+            // Dependency Injection
+            string dbConnection = Configuration.GetValue<string>("Database");
             services.AddDbContext<PersonContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MSSQLServerConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString(dbConnection)));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

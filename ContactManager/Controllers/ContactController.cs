@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContactManager.Data;
 using ContactManager.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace ContactManager.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowSpecificOrigin")]
     public class ContactController : ControllerBase
     {
         private readonly PersonContext _context;

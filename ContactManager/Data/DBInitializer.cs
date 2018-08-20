@@ -17,17 +17,18 @@ namespace ContactManager.Data
             {
                 return;   // DB has been seeded
             }
-            /*
+            /* */
             context.Persons.Add(new Person()
             {
                 FirstName = "Huey",
                 LastName = "Zhou",
+                ContactCategory = "Customer",
                 Birthday = new DateTime(1999, 1, 2),
                 Email = "hueuzhou@hotmail.com",
                 Telephone = "6479292569"
             });
             context.SaveChanges();
-            */
+            /* */
         }
     }
 }
