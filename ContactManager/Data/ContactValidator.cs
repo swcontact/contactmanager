@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using ContactManager.Models;
 using System.ComponentModel.DataAnnotations;
-using System.Net.Mail;
-using System.Text.RegularExpressions;
 
-namespace ContactManager.Models
+namespace ContactManager.Data
 {
+    /**
+     * Custom Email Validator
+     * */
     public class CustomEmailValidatorAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
@@ -38,6 +39,10 @@ namespace ContactManager.Models
             return ValidationResult.Success;
         }
     }
+
+    /**
+     * Custom Birthday Validator
+     * */
     public class CustomBirthdayValidatorAttribute : ValidationAttribute
     {
         public string Pattern { get; set; } = @"^(19|20)\d{2}\-((0[1-9])|(1[0-2]))\-((0[1-9])|([12][0-9])|(3[01]))$";
@@ -66,6 +71,9 @@ namespace ContactManager.Models
         }
     }
 
+    /**
+     * Custom Telephone Validator
+     * */
     public class CustomTelephoneValidatorAttribute : ValidationAttribute
     {
         public string Pattern { get; set; } = @"^\d{7,12}$";
@@ -100,6 +108,9 @@ namespace ContactManager.Models
         }
     }
 
+    /**
+     * Custom Category Validator
+     * */
     public class CustomCategoryValidatorAttribute : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)

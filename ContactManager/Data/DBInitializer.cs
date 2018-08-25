@@ -1,8 +1,4 @@
-﻿using ContactManager.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 
 namespace ContactManager.Data
 {
@@ -12,17 +8,20 @@ namespace ContactManager.Data
         {
             context.Database.EnsureCreated();
 
-            // Look for any students.
             if (context.Contacts.Any())
             {
                 return;   // DB has been seeded
             }
-            /* 
-            context.Contacts.Add(new Contact()
+            /*
+            context.Contacts.Add(new Person()
             {
                 FirstName = "Huey",
                 LastName = "Zhou",
-                Information = "{}"
+                Category = Person.Customer,
+                Contact = "myemail@email.com",
+                Email = "myemail@email.com",
+                Birthday = "",
+                Telephone = "",
             });
             context.SaveChanges();
             /* */

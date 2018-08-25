@@ -1,10 +1,9 @@
-﻿using System;
+﻿using ContactManager.Data;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContactManager.Models
 {
-
     public class Person
     {
         public const string Customer = "Customer";

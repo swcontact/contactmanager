@@ -24,7 +24,7 @@ namespace ContactManager.Controllers
             _context = context;
             _logger = LogManager.GetCurrentClassLogger();
 
-            debugLog("Initial Contacts Controller ended");
+            debugLog("Initialized Contacts Controller");
         }
 
         // GET: api/Contacts
