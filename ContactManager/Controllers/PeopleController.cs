@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ContactManager.Data;
@@ -14,11 +12,11 @@ namespace ContactManager.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("AllowSpecificOrigin")]
-    public class ContactController : ControllerBase
+    public class PeopleController : ControllerBase
     {
         private readonly PersonContext _context;
 
-        public ContactController(PersonContext context)
+        public PeopleController(PersonContext context)
         {
             _context = context;
         }

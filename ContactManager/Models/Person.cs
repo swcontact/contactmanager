@@ -1,10 +1,15 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContactManager.Models
 {
+
     public class Person
     {
+        public const string Customer = "Customer";
+        public const string Supplier = "Supplier";
+
         public long ID { get; set; }
 
         [Required]
@@ -17,15 +22,25 @@ namespace ContactManager.Models
 
         [Required]
         [StringLength(20)]
-        public string ContactCategory { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime Birthday { get; set; }
+        [CustomCategoryValidator]
+        public string Category { get; set; }
 
         [StringLength(255)]
+        public string Contact { get; set; }
+
+        /* not mapped */
+        [NotMapped]
+        [CustomEmailValidator]
         public string Email { get; set; }
 
-        [StringLength(12)]
+        [NotMapped]
+        [CustomBirthdayValidator]
+        public string Birthday { get; set; }
+
+        [NotMapped]
+        [CustomTelephoneValidator]
         public string Telephone { get; set; }
+
+
     }
 }

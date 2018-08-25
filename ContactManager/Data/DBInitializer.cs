@@ -8,24 +8,21 @@ namespace ContactManager.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(PersonContext context)
+        public static void Initialize(ContactContext context)
         {
             context.Database.EnsureCreated();
 
             // Look for any students.
-            if (context.Persons.Any())
+            if (context.Contacts.Any())
             {
                 return;   // DB has been seeded
             }
-            /* */
-            context.Persons.Add(new Person()
+            /* 
+            context.Contacts.Add(new Contact()
             {
                 FirstName = "Huey",
                 LastName = "Zhou",
-                ContactCategory = "Customer",
-                Birthday = new DateTime(1999, 1, 2),
-                Email = "hueuzhou@hotmail.com",
-                Telephone = "6479292569"
+                Information = "{}"
             });
             context.SaveChanges();
             /* */

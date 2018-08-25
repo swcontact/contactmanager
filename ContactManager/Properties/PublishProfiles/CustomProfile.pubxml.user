@@ -17,7 +17,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
-    <EFMigrations Include="ContactManager.Data.PersonContext">
+    <EFMigrations Include="ContactManager.Data.ContactContext">
       <Value>
       </Value>
     </EFMigrations>

@@ -19,7 +19,7 @@ namespace ContactManager
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<PersonContext>();
+                    var context = services.GetRequiredService<ContactContext>();
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)

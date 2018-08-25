@@ -27,7 +27,7 @@ namespace ContactManager
                 services.AddCors(options =>
                 {
                     options.AddPolicy("AllowSpecificOrigin",
-                        builder => builder.AllowAnyOrigin());
+                        builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
                 });
             }
             else
@@ -35,14 +35,14 @@ namespace ContactManager
                 services.AddCors(options =>
                 {
                 options.AddPolicy("AllowSpecificOrigin",
-                    builder => builder.WithOrigins(corsOrigin));
+                    builder => builder.WithOrigins(corsOrigin).AllowAnyHeader().AllowAnyMethod());
                 });
 
             }
 
             // Dependency Injection
             string dbConnection = Configuration.GetValue<string>("Database");
-            services.AddDbContext<PersonContext>(options =>
+            services.AddDbContext<ContactContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(dbConnection)));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
@@ -61,6 +61,7 @@ namespace ContactManager
             }
 
             app.UseHttpsRedirection();
+            app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
         }
     }
