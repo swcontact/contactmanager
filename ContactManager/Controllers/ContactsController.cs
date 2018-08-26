@@ -7,6 +7,8 @@ using ContactManager.Data;
 using ContactManager.Models;
 using Microsoft.AspNetCore.Cors;
 using NLog;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace ContactManager.Controllers
 {
@@ -16,13 +18,18 @@ namespace ContactManager.Controllers
     public class ContactsController : ControllerBase
     {
         private readonly ContactContext _context;
-        private Logger _logger;
-        private bool _debug = true;
+        private readonly IOptions<CustomSetting> _customSetting;
+        private static Logger _logger = null;
 
-        public ContactsController(ContactContext context)
+        public ContactsController(ContactContext context, IOptions<CustomSetting> customSetting)
         {
             _context = context;
-            _logger = LogManager.GetCurrentClassLogger();
+            _customSetting = customSetting;
+
+            if (_logger == null)
+            {
+                _logger = LogManager.GetCurrentClassLogger();
+            }
 
             debugLog("Initialized Contacts Controller");
         }
@@ -230,7 +237,7 @@ namespace ContactManager.Controllers
 
         private void debugLog(string message, string logType = "info", bool debug = true)
         {
-            if (_debug)
+            if (_customSetting.Value.DebugLog.ToLower() == "yes")
             {
                 switch (logType)
                 {

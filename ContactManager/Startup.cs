@@ -45,6 +45,9 @@ namespace ContactManager
             services.AddDbContext<ContactContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString(dbConnection)));
 
+            // Inject CustomSetting
+            services.Configure<CustomSetting>(Configuration.GetSection("CustomSetting"));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

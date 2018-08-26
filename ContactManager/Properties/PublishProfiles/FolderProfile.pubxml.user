@@ -9,12 +9,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>C:\huey\publish\ContactManager</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <DestinationConnectionStrings Include="LocalDBConnection">
+      <Value>Server=%28localdb%29\mssqllocaldb%3bDatabase=SunwingLocalDB%3bTrusted_Connection=True%3bMultipleActiveResultSets=true</Value>
+    </DestinationConnectionStrings>
     <DestinationConnectionStrings Include="MSSQLServerConnection">
-      <Value>Server=localhost%3bDatabase=ContactManager%3bTrusted_Connection=True%3b</Value>
+      <Value>Server=localhost%3bDatabase=SunwingSQL%3bTrusted_Connection=True%3b</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
-    <EFMigrations Include="ContactManager.Data.PersonContext">
+    <EFMigrations Include="ContactManager.Data.ContactContext">
       <Value>
       </Value>
     </EFMigrations>
